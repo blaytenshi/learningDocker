@@ -7,6 +7,7 @@ services: # tells docker to start up these containers
   redis-server: # one container with service name redis-server
     image: 'redis' # download the redis image
   node-app: # one container with service name node-app
+    restart: always
     build: . # there's no image we can download so we must build it
     ports: # specifying which ports to map from outside server to inside container
       - "4001:8081" # a dash (-) represents an array in yml
