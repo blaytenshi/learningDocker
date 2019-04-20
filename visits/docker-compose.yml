@@ -1,0 +1,12 @@
+# YML files are space separated!
+# By spinning up all these services together in one docker-compose file
+# we have essentially set all these services up on the same network
+# and therefore won't have to make any manual network configs
+version: '3' # version of docker-compose that we need to run this file
+services: # tells docker to start up these containers
+  redis-server: # one container with service name redis-server
+    image: 'redis' # download the redis image
+  node-app: # one container with service name node-app
+    build: . # there's no image we can download so we must build it
+    ports: # specifying which ports to map from outside server to inside container
+      - "4001:8081" # a dash (-) represents an array in yml
